@@ -49,6 +49,10 @@ let playRound = (playerSelection, computerChoice) => {
     }
 }
 
+/**
+ *  This function starts the game when called out. Call it once. If you want to change the number
+ *  of times you want to play the game, simply change the value specified in GAME_ROUNDS.
+ */
 let game = () => {
     let playerSelection;
 
