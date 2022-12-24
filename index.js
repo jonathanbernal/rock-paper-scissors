@@ -1,5 +1,9 @@
 const computerChoices = ["rock", "paper", "scissors"];
-const GAME_ROUNDS = 5; // Defines the number of attempts the user will play against the COM
+const rockButton = document.querySelector('#rock');
+const paperButton = document.querySelector('#paper');
+const scissorsButton = document.querySelector('#scissors');
+const result = document.querySelector('.result');
+const score = document.querySelector('.score');
 
 /**
  * This function generates a choice of rock, paper, scissors for the computer (COM).
