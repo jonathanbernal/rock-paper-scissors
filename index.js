@@ -4,7 +4,12 @@ const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
 const result = document.querySelector('.result');
 const score = document.querySelector('.score');
+
+// dialog element selectors
 const dialogPrompt = document.querySelector('.dialog-prompt');
+const dialogTitle = document.querySelector('.dialog-title');
+const yesButton = document.querySelector('button[value="yes"]');
+const noButton = document.querySelector('button[value="no"]');
 
 // Define player and computer (COM) scores
 let playerScore = 0;
@@ -15,7 +20,7 @@ let computerScore = 0;
  * @returns the choice of the computer
  */
 let getComputerChoice = () => {
-    return computerChoices[Math.round(Math.random() * 2)];
+    return computerChoices[Math.round( Math.random() * 2 )];
 }
 
 /**
@@ -30,7 +35,7 @@ let getComputerChoice = () => {
  */
 let playRound = (playerSelection, computerChoice) => {
     // Sanitize user choice before comparing it with the computer's choice
-    switch(playerSelection.toLowerCase())
+    switch( playerSelection.toLowerCase() )
     {
         case 'rock':
             if (computerChoice === 'rock'){
@@ -95,11 +100,11 @@ let updateScore = () => {
  * by either the player or the computer.
  */
 let announceWinner = () => {
-    if (playerScore === 5){
+    if ( playerScore === 5 ){
         result.textContent = 'Congrats! You win!';
         askForReplay();
     }  
-    else if (computerScore === 5){
+    else if ( computerScore === 5 ){
         result.textContent = 'Sorry, you lose! Computer wins!';
         askForReplay();
     }
@@ -125,7 +130,7 @@ let didComputerWin = () => computerScore === 5;
 let resetScores = () => {
     // perform a sanity check in order to prevent possible abuse by
     // resetting the scores in places where they should not be reset;
-    if(didPlayerWin() || didComputerWin()){
+    if( didPlayerWin() || didComputerWin() ){
         playerScore = 0;
         computerScore = 0;
     }
@@ -137,9 +142,8 @@ let resetScores = () => {
  * decision.
  */
 let askForReplay = () => {
-    let dialogTitle = document.querySelector('.dialog-title');
 
-    if( didPlayerWin() )
+    if ( didPlayerWin() )
         dialogTitle.textContent = 'You win!';
     else if ( didComputerWin() )
         dialogTitle.textContent = 'You lose!';
@@ -168,6 +172,21 @@ scissorsButton.addEventListener('click', (evt) => {
     playRound(evt.target.value, getComputerChoice());
     announceWinner();
 });
+
+// Here we need a reference to the dialog itself, hence
+// why we use function() as opposed to a lambda.
+dialogPrompt.addEventListener('keydown', function(evt){
+    if (evt.keyCode === 27) { // triggered when the player presses ESC
+        console.log('closing dialog');
+        this.close();
+    }
+});
+
+yesButton.addEventListener('click', () => {
+    location.reload(); // reload the window
+});
+
+noButton.addEventListener('click', () => dialogPrompt.close());
 
 
 
