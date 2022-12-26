@@ -5,6 +5,7 @@ const scissorsButton = document.querySelector('#scissors');
 const result = document.querySelector('.result');
 const score = document.querySelector('.score');
 
+
 /**
  * This function generates a choice of rock, paper, scissors for the computer (COM).
  * @returns the choice of the computer
@@ -26,48 +27,46 @@ let playRound = (playerSelection, computerChoice) => {
     {
         case 'rock':
             if (computerChoice === 'rock')
-                return "It's a tie! Rock - Rock";
+                result.textContent = "It's a tie! Rock - Rock";
             else if (computerChoice === 'paper')
-                return "You lose! Paper beats Rock!";
+                result.textContent = "You lose! Paper beats Rock!";
             else if (computerChoice === 'scissors')
-                return "You win! Rock beats Scissors!";
+                result.textContent = "You win! Rock beats Scissors!";
             break;
         case 'paper':
             if (computerChoice === 'rock')
-                return 'You win! Paper beats Rock!';
+                result.textContent = 'You win! Paper beats Rock!';
             else if (computerChoice === 'paper')
-                return "It's a tie! Paper - Paper!";
+                result.textContent = "It's a tie! Paper - Paper!";
             else if (computerChoice === 'scissors')
-                return 'You lose! Scissors beats Paper!';
+                result.textContent = 'You lose! Scissors beats Paper!';
             break;
         case 'scissors':
             if (computerChoice === 'rock')
-                return 'You lose! Rock beats Scissors!'
+                result.textContent = 'You lose! Rock beats Scissors!'
             else if (computerChoice === 'paper')
-                return 'You win! Scissors beats Paper'
+                result.textContent = 'You win! Scissors beats Paper'
             else if (computerChoice === 'scissors')
-                return "It's a tie! Scissors - Scissors!"
+                result.textContent = "It's a tie! Scissors - Scissors!"
             break;
         default:
-            return 'Invalid player choice. Enter rock, paper, or scissors.';
+            result.textContent = 'Invalid player choice. Enter rock, paper, or scissors.';
     }
 }
 
-/**
- *  This function starts the game when called out. Call it once. If you want to change the number
- *  of times you want to play the game, simply change the value specified in GAME_ROUNDS.
- */
-let game = () => {
-    let playerSelection;
+// Add event listeners to the three buttons. Pressing each button will play
+// the game once and update the score based on the results.
+rockButton.addEventListener('click', (evt) => {
+    playRound(evt.target.value, getComputerChoice());
+});
 
-    for(let i = 0; i < GAME_ROUNDS; i++){
-        playerSelection = prompt("Enter your choice: "); // This prompt is called again on each round
-        console.log( playRound(playerSelection, getComputerChoice()) );
-    }
-}
+paperButton.addEventListener('click', (evt) => {
+    playRound(evt.target.value, getComputerChoice());
+});
 
-// Initialize the game
-game();
+scissorsButton.addEventListener('click', (evt) => {
+    playRound(evt.target.value, getComputerChoice());
+});
 
 
 
