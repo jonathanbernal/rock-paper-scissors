@@ -98,6 +98,22 @@ let announceWinner = () => {
         result.textContent = 'Congrats! You win!';
     else if (computerScore === 5)
         result.textContent = 'Sorry, you lose! Computer wins!';
+
+    // Check for scores and make sure there is a winner
+    resetScores();
+}
+
+/**
+ * This function resets the scores back to 0 when either player wins 5 rounds;
+ */
+let resetScores = () => {
+    // perform a sanity check in order to prevent possible abuse by
+    // resetting the scores in places where they should not be reset;
+    if(playerScore === 5 || computerScore === 5){
+        playerScore = 0;
+        computerScore = 0;
+        updateScore();
+    }
 }
 
 // Add event listeners to the three buttons. Pressing each button will play
