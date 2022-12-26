@@ -89,18 +89,32 @@ let updateScore = () => {
     score.textContent =`${playerScore} ${computerScore}`;
 }
 
+/**
+ * This function determines the winner of the game once a total of 5 games are won
+ * by either the player or the computer.
+ */
+let announceWinner = () => {
+    if (playerScore === 5)
+        result.textContent = 'Congrats! You win!';
+    else if (computerScore === 5)
+        result.textContent = 'Sorry, you lose! Computer wins!';
+}
+
 // Add event listeners to the three buttons. Pressing each button will play
 // the game once and update the score based on the results.
 rockButton.addEventListener('click', (evt) => {
     playRound(evt.target.value, getComputerChoice());
+    announceWinner();
 });
 
 paperButton.addEventListener('click', (evt) => {
     playRound(evt.target.value, getComputerChoice());
+    announceWinner();
 });
 
 scissorsButton.addEventListener('click', (evt) => {
     playRound(evt.target.value, getComputerChoice());
+    announceWinner();
 });
 
 
