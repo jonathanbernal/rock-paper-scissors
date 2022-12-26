@@ -112,23 +112,27 @@ let resetScores = () => {
     if(playerScore === 5 || computerScore === 5){
         playerScore = 0;
         computerScore = 0;
-        updateScore();
     }
 }
 
 // Add event listeners to the three buttons. Pressing each button will play
 // the game once and update the score based on the results.
 rockButton.addEventListener('click', (evt) => {
+    // Update the score on event clicks, so that the player can see the final
+    // result until they click on a button again.
+    updateScore();
     playRound(evt.target.value, getComputerChoice());
     announceWinner();
 });
 
 paperButton.addEventListener('click', (evt) => {
+    updateScore();
     playRound(evt.target.value, getComputerChoice());
     announceWinner();
 });
 
 scissorsButton.addEventListener('click', (evt) => {
+    updateScore();
     playRound(evt.target.value, getComputerChoice());
     announceWinner();
 });
