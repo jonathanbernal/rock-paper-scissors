@@ -37,16 +37,19 @@ let playRound = (playerSelection, computerChoice) => {
             }
             else if (computerChoice === 'paper'){
                 computerScore++;
+                updateScore();
                 result.textContent = "You lose! Paper beats Rock!";
             }
             else if (computerChoice === 'scissors'){
                 playerScore++;
+                updateScore();
                 result.textContent = "You win! Rock beats Scissors!";
             }
             break;
         case 'paper':
             if (computerChoice === 'rock'){
                 playerScore++;
+                updateScore();
                 result.textContent = 'You win! Paper beats Rock!';
             }
             else if (computerChoice === 'paper'){
@@ -54,16 +57,19 @@ let playRound = (playerSelection, computerChoice) => {
             }
             else if (computerChoice === 'scissors'){
                 computerScore++;
+                updateScore();
                 result.textContent = 'You lose! Scissors beats Paper!';
             }
             break;
         case 'scissors':
             if (computerChoice === 'rock'){
                 computerScore++;
+                updateScore();
                 result.textContent = 'You lose! Rock beats Scissors!';
             }
             else if (computerChoice === 'paper'){
                 playerScore++;
+                updateScore();
                 result.textContent = 'You win! Scissors beats Paper';
             }
             else if (computerChoice === 'scissors'){
@@ -73,6 +79,14 @@ let playRound = (playerSelection, computerChoice) => {
         default:
             result.textContent = 'Invalid player choice. Enter rock, paper, or scissors.';
     }
+}
+
+/**
+ * This function renders and updates the scores. Call it when a change in the
+ * score values has occurred.
+ */
+let updateScore = () => {
+    score.textContent =`${playerScore} ${computerScore}`;
 }
 
 // Add event listeners to the three buttons. Pressing each button will play
