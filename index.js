@@ -4,6 +4,7 @@ const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
 const result = document.querySelector('.result');
 const score = document.querySelector('.score');
+const dialogPrompt = document.querySelector('.dialog-prompt');
 
 // Define player and computer (COM) scores
 let playerScore = 0;
@@ -94,14 +95,29 @@ let updateScore = () => {
  * by either the player or the computer.
  */
 let announceWinner = () => {
-    if (playerScore === 5)
+    if (playerScore === 5){
         result.textContent = 'Congrats! You win!';
-    else if (computerScore === 5)
+        askForReplay();
+    }  
+    else if (computerScore === 5){
         result.textContent = 'Sorry, you lose! Computer wins!';
-
+        askForReplay();
+    }
     // Check for scores and make sure there is a winner
     resetScores();
 }
+
+/**
+ *  This function checks whether the player won the game
+ * @returns whether or not the player won the game
+ */
+let didPlayerWin = () => playerScore === 5;
+
+/**
+ * This function checks whether the player won the game
+ * @returns whether or not the computer won the game
+ */
+let didComputerWin = () => computerScore === 5;
 
 /**
  * This function resets the scores back to 0 when either player wins 5 rounds;
@@ -109,10 +125,26 @@ let announceWinner = () => {
 let resetScores = () => {
     // perform a sanity check in order to prevent possible abuse by
     // resetting the scores in places where they should not be reset;
-    if(playerScore === 5 || computerScore === 5){
+    if(didPlayerWin() || didComputerWin()){
         playerScore = 0;
         computerScore = 0;
     }
+}
+
+/**
+ * This function asks whether the player wants to play again or not.
+ * It checks the both the player's and COM's score before making a
+ * decision.
+ */
+let askForReplay = () => {
+    let dialogTitle = document.querySelector('.dialog-title');
+
+    if( didPlayerWin() )
+        dialogTitle.textContent = 'You win!';
+    else if ( didComputerWin() )
+        dialogTitle.textContent = 'You lose!';
+
+    let playerChoice = dialogPrompt.showModal();
 }
 
 // Add event listeners to the three buttons. Pressing each button will play
