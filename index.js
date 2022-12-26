@@ -17,9 +17,12 @@ let getComputerChoice = () => {
 /**
  * This function plays a round of rock, paper, scissors against the COM and returns
  * the result of the game as a string.
+ * 
+ * The result is then rendered on the main page.
+ * 
  * @param {String} playerSelection the player's choice obtained from the prompt
  * @param {String} computerChoice the previously generated computer choice.
- * @returns the result of the match
+ * 
  */
 let playRound = (playerSelection, computerChoice) => {
     // Sanitize user choice before comparing it with the computer's choice
