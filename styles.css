@@ -40,11 +40,11 @@ body {
     font-size: 18px;
 }
 
-.score-title {
+.score-title, .choice-title {
     font-size: 24px;
 }
 
-.player-score, .computer-score {
+.player-score, .computer-score, .result {
     font-size: 30px;
     font-weight: 1000;
 }
