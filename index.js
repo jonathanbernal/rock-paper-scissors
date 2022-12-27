@@ -44,19 +44,19 @@ let playRound = (playerSelection, computerChoice) => {
             }
             else if (computerChoice === 'paper'){
                 computerScore++;
-                updateScore();
+                updateScores();
                 result.textContent = "You lose! Paper beats Rock!";
             }
             else if (computerChoice === 'scissors'){
                 playerScore++;
-                updateScore();
+                updateScores();
                 result.textContent = "You win! Rock beats Scissors!";
             }
             break;
         case 'paper':
             if (computerChoice === 'rock'){
                 playerScore++;
-                updateScore();
+                updateScores();
                 result.textContent = 'You win! Paper beats Rock!';
             }
             else if (computerChoice === 'paper'){
@@ -64,19 +64,19 @@ let playRound = (playerSelection, computerChoice) => {
             }
             else if (computerChoice === 'scissors'){
                 computerScore++;
-                updateScore();
+                updateScores();
                 result.textContent = 'You lose! Scissors beats Paper!';
             }
             break;
         case 'scissors':
             if (computerChoice === 'rock'){
                 computerScore++;
-                updateScore();
+                updateScores();
                 result.textContent = 'You lose! Rock beats Scissors!';
             }
             else if (computerChoice === 'paper'){
                 playerScore++;
-                updateScore();
+                updateScores();
                 result.textContent = 'You win! Scissors beats Paper';
             }
             else if (computerChoice === 'scissors'){
@@ -92,7 +92,7 @@ let playRound = (playerSelection, computerChoice) => {
  * This function renders and updates the scores. Call it when a change in the
  * score values has occurred.
  */
-let updateScore = () => {
+let updateScores = () => {
     playerScoreText.textContent = playerScore;
     computerScoreText.textContent = computerScore;
 }
@@ -158,19 +158,19 @@ let askForReplay = () => {
 rockButton.addEventListener('click', (evt) => {
     // Update the score on event clicks, so that the player can see the final
     // result until they click on a button again.
-    updateScore();
+    updateScores();
     playRound(evt.target.value, getComputerChoice());
     announceWinner();
 });
 
 paperButton.addEventListener('click', (evt) => {
-    updateScore();
+    updateScores();
     playRound(evt.target.value, getComputerChoice());
     announceWinner();
 });
 
 scissorsButton.addEventListener('click', (evt) => {
-    updateScore();
+    updateScores();
     playRound(evt.target.value, getComputerChoice());
     announceWinner();
 });
