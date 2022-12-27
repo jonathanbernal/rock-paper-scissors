@@ -3,7 +3,8 @@ const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
 const result = document.querySelector('.result');
-const score = document.querySelector('.score');
+const playerScoreText = document.querySelector('.player-score');
+const computerScoreText = document.querySelector('.computer-score');
 
 // dialog element selectors
 const dialogPrompt = document.querySelector('.dialog-prompt');
@@ -92,7 +93,8 @@ let playRound = (playerSelection, computerChoice) => {
  * score values has occurred.
  */
 let updateScore = () => {
-    score.textContent =`${playerScore} ${computerScore}`;
+    playerScoreText.textContent = playerScore;
+    computerScoreText.textContent = computerScore;
 }
 
 /**
