@@ -56,13 +56,18 @@ body {
     gap: 1.2em;
 }
 
-#rock, #paper, #scissors {
+.player-button {
     border-style: none;
     border-radius: 0.2em;
     font-size: 48px;
     flex-basis: 72px;
     width: fit-content;
     padding: 0.7em;
+}
+
+.player-button:hover {
+    border: 6px solid #444;
+    transform: scale(1.05);
 }
 
 .game-title {
@@ -78,12 +83,14 @@ body {
 
 :modal {
     background-color: #ccc;
-    border: solid 3px #fff;
+    border: solid 4px #fff;
     border-radius: 0.25em;
     box-shadow: 3px 3px 10px #222;
     display:flex;
     flex-direction: column;
     gap: 0.5em;
+    font-size: 32px;
+    padding: 1em;
 
     /* These properties make it possible to place the modal in the middle of the page.
      * This was not possible with flexbox, so I had to resort to use absolute positioning
@@ -96,8 +103,29 @@ body {
     transform: translate(-50%, -50%);
 }
 
-:modal .dialog-title {
+.dialog-title {
     font-size: 48px;
+}
+
+.button-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.button-dialog {
+    border: 2px solid #aaa;
+    width: 100px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.button-dialog:hover{
+    border: 4px solid #777;
+    transform: scale(1.1);
 }
 
 /* Applying this class to an element makes it blur. This is used to blur what is behind the modal in JS*/
