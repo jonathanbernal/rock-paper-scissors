@@ -151,6 +151,15 @@ let askForReplay = () => {
         dialogTitle.textContent = 'You lose!';
 
     let playerChoice = dialogPrompt.showModal();
+    addBlur(document.body);
+}
+
+let addBlur = (element) => {
+    element.classList.add('blur');
+}
+
+let removeBlur = (element) => {
+    element.classList.remove('blur');
 }
 
 // Add event listeners to the three buttons. Pressing each button will play
@@ -179,7 +188,7 @@ scissorsButton.addEventListener('click', (evt) => {
 // why we use function() as opposed to a lambda.
 dialogPrompt.addEventListener('keydown', function(evt){
     if (evt.keyCode === 27) { // triggered when the player presses ESC
-        console.log('closing dialog');
+        removeBlur(document.body);
         this.close();
     }
 });
@@ -188,7 +197,10 @@ yesButton.addEventListener('click', () => {
     location.reload(); // reload the window
 });
 
-noButton.addEventListener('click', () => dialogPrompt.close());
+noButton.addEventListener('click', () => {
+    removeBlur(document.body);
+    dialogPrompt.close();
+});
 
 
 
