@@ -9,27 +9,29 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
-    <div class="scoreboard">
-        <h2>Score</h2>
-        <div>You COM</div>
-        <div class="score">0 0</div>
-    </div>
-    <h3>Pick Your Choice</h3>
-    <div class="player-choice">
-        <button value="rock" id="rock">Rock</button>
-        <button value="paper" id="paper">Paper</button>
-        <button value="scissors" id="scissors">Scissors</button>
-    </div>
-    <div class="result"></div>
-    <!-- this dialog is fired after a player wins or loses -->
-    <dialog class="dialog-prompt">
-        <h2 class="dialog-title"></h2>
-        <p>Want to play again?</p>
-        <div class="button-dialog-container">
-            <button class="button-dialog" value="yes">Yes</button>
-            <button class="button-dialog" value="no">No</button>
+    <div class="game-container">
+        <h1>Rock Paper Scissors</h1>
+        <div class="scoreboard">
+            <h2>Score</h2>
+            <div>You COM</div>
+            <div class="score">0 0</div>
         </div>
-    </dialog>
+        <h3>Pick Your Choice</h3>
+        <div class="player-choice">
+            <button value="rock" id="rock">Rock</button>
+            <button value="paper" id="paper">Paper</button>
+            <button value="scissors" id="scissors">Scissors</button>
+        </div>
+        <div class="result"></div>
+        <!-- this dialog is fired after a player wins or loses -->
+        <dialog class="dialog-prompt">
+            <h2 class="dialog-title"></h2>
+            <p>Want to play again?</p>
+            <div class="button-dialog-container">
+                <button class="button-dialog" value="yes">Yes</button>
+                <button class="button-dialog" value="no">No</button>
+            </div>
+        </dialog>
+    </div>
 </body>
 </html>
