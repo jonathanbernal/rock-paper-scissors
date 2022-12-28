@@ -1,10 +1,14 @@
-const computerChoices = ["rock", "paper", "scissors"];
+// Player buttons
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
-const result = document.querySelector('.result');
+// This reference is used to add the audio effect to all 3 buttons at once.
+const playerButtons = document.querySelectorAll('.player-button');
+
+// Scoreboard and results
 const playerScoreText = document.querySelector('.player-score');
 const computerScoreText = document.querySelector('.computer-score');
+const result = document.querySelector('.result');
 
 // dialog element selectors
 const dialogPrompt = document.querySelector('.dialog-prompt');
@@ -12,7 +16,17 @@ const dialogTitle = document.querySelector('.dialog-title');
 const yesButton = document.querySelector('button[value="yes"]');
 const noButton = document.querySelector('button[value="no"]');
 
+// audio elements
+const selectSound = document.querySelector('audio[data-key="select"]');
+const rockSound = document.querySelector('audio[data-key="rock"]');
+const paperSound = document.querySelector('audio[data-key="paper"]');
+const scissorsSound = document.querySelector('audio[data-key="scissors"]');
+const winSound = document.querySelector('audio[data-key="win"]');
+const loseSound = document.querySelector('audio[data-key="lose"]');
+
+
 // Define player and computer (COM) scores
+const computerChoices = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
@@ -145,26 +159,60 @@ let resetScores = () => {
  */
 let askForReplay = () => {
 
-    if ( didPlayerWin() )
+    if ( didPlayerWin() ){
+        winSound.play();
         dialogTitle.textContent = 'You win!';
-    else if ( didComputerWin() )
+    }
+    else if ( didComputerWin() ){
+        loseSound.play();
         dialogTitle.textContent = 'You lose!';
+    }
 
     let playerChoice = dialogPrompt.showModal();
     addBlur(document.body);
 }
 
+/**
+ * This function adds a blur effect to the target element.
+ * 
+ * @param {HTMLElement} element the element to add the blur effect to
+ */
 let addBlur = (element) => {
     element.classList.add('blur');
 }
 
+/**
+ * This function removes the blur effect to the target element.
+ * 
+ * @param {HTMLElement} element the element to remove the blur effect from
+ */
 let removeBlur = (element) => {
     element.classList.remove('blur');
 }
 
+rockButton.addEventListener('mouseover', () => {
+    // We need to reset the current time because a player may hover over all the player
+    // buttons in rapid succession and the sound for one button might not finish playing
+    // before the player hovers over another button.
+    selectSound.currentTime = 0;
+    selectSound.play();
+});
+
+paperButton.addEventListener('mouseover', () => {
+    selectSound.currentTime = 0;
+    selectSound.play();
+});
+
+scissorsButton.addEventListener('mouseover', () => {
+    selectSound.currentTime = 0;
+    selectSound.play();
+});
+
 // Add event listeners to the three buttons. Pressing each button will play
 // the game once and update the score based on the results.
 rockButton.addEventListener('click', (evt) => {
+    rockSound.currentTime = 0;
+    rockSound.play();
     // Update the score on event clicks, so that the player can see the final
     // result until they click on a button again.
     updateScores();
@@ -173,12 +221,16 @@ rockButton.addEventListener('click', (evt) => {
 });
 
 paperButton.addEventListener('click', (evt) => {
+    paperSound.currentTime = 0;
+    paperSound.play();
     updateScores();
     playRound(evt.target.value, getComputerChoice());
     announceWinner();
 });
 
 scissorsButton.addEventListener('click', (evt) => {
+    scissorsSound.currentTime = 0;
+    scissorsSound.play();
     updateScores();
     playRound(evt.target.value, getComputerChoice());
     announceWinner();
@@ -201,6 +253,3 @@ noButton.addEventListener('click', () => {
     removeBlur(document.body);
     dialogPrompt.close();
 });
-
-
-
