@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     align-items: center;
     align-self: center;
-    padding: 2em;
+    padding: 2em 4em;
     gap: 1em;
     width: fit-content;
     text-align: center; 
@@ -41,12 +41,12 @@ body {
 }
 
 .score-title, .choice-title, .result {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 1000;
 }
 
 .player-score, .computer-score {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 1000;
 }
 
@@ -62,7 +62,7 @@ body {
     font-size: 48px;
     flex-basis: 72px;
     width: fit-content;
-    padding: 0.7em;
+    padding: 0.5em;
 }
 
 .player-button:hover {
@@ -71,19 +71,19 @@ body {
 }
 
 .game-title {
-    font-size: 48px;
+    font-size: 40px;
 }
 
 .footer {
     display: flex;
     background-color: #222;
     justify-content: center;
-    padding: 2em;
+    padding: 1.5em;
 }
 
 :modal {
     background-color: #ccc;
-    border: solid 4px #fff;
+    border: solid 6px #fff;
     border-radius: 0.25em;
     box-shadow: 3px 3px 10px #222;
     display:flex;
