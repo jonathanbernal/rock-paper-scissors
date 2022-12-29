@@ -1,12 +1,12 @@
-# rock-paper-scissors
+# <p align="center">Rock Paper Scissors</p>
 ![](./assets/images/website-preview.PNG)
 
-A website where you can play Rock Paper Scissors against the computer.
+<p align="center">A website where you can play Rock Paper Scissors against the computer.</p>
 
 # Purpose
 The purpose of this project was to make a game using HTML5, CSS, and JS only. No 3rd party libraries were used.
 
-I also wanted to test some concepts I had learned recently, namely DOM manipulation and incorporating audio elements on a website. This took some thinking and quite some work. I am hoping that in the future, I can revamp the UI and add more animations to it to make the game more rewarding visually.
+I also wanted to test some concepts I had learned recently, namely DOM manipulation and incorporating audio elements on a website. This took some thinking and quite some work. I am hoping that in the future, I can revamp the UI and add more animations to it to make the game more visually rewarding.
 
 # How to Run
 1. Open the file directory in your IDE of choice.
