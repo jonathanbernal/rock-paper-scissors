@@ -39,6 +39,17 @@ let getComputerChoice = () => {
 }
 
 /**
+ * This function renders the argument text on the result HTML element.
+ * This function is used to decouple the functionality of playRound(),
+ * thus eliminating the text rendering side effect.
+ * 
+ * @param {String} text the string to render on the result HTML element
+ */
+let renderOnResultElement = (text) => {
+    result.textContent = text;
+}
+
+/**
  * This function plays a round of rock, paper, scissors against the COM and returns
  * the result of the game as a string.
  * 
@@ -54,51 +65,51 @@ let playRound = (playerSelection, computerChoice) => {
     {
         case 'rock':
             if (computerChoice === 'rock'){
-                result.textContent = "It's a tie! Rock - Rock";
+                return "It's a tie! Rock - Rock";
             }
             else if (computerChoice === 'paper'){
                 computerScore++;
                 updateScores();
-                result.textContent = "You lose! Paper beats Rock!";
+                return "You lose! Paper beats Rock!";
             }
             else if (computerChoice === 'scissors'){
                 playerScore++;
                 updateScores();
-                result.textContent = "You win! Rock beats Scissors!";
+                return "You win! Rock beats Scissors!";
             }
             break;
         case 'paper':
             if (computerChoice === 'rock'){
                 playerScore++;
                 updateScores();
-                result.textContent = 'You win! Paper beats Rock!';
+                return 'You win! Paper beats Rock!';
             }
             else if (computerChoice === 'paper'){
-                result.textContent = "It's a tie! Paper - Paper!";
+                return "It's a tie! Paper - Paper!";
             }
             else if (computerChoice === 'scissors'){
                 computerScore++;
                 updateScores();
-                result.textContent = 'You lose! Scissors beats Paper!';
+                return 'You lose! Scissors beats Paper!';
             }
             break;
         case 'scissors':
             if (computerChoice === 'rock'){
                 computerScore++;
                 updateScores();
-                result.textContent = 'You lose! Rock beats Scissors!';
+                return 'You lose! Rock beats Scissors!';
             }
             else if (computerChoice === 'paper'){
                 playerScore++;
                 updateScores();
-                result.textContent = 'You win! Scissors beats Paper';
+                return 'You win! Scissors beats Paper';
             }
             else if (computerChoice === 'scissors'){
-                result.textContent = "It's a tie! Scissors - Scissors!"
+                return "It's a tie! Scissors - Scissors!"
             }
             break;
         default:
-            result.textContent = 'Invalid player choice. Enter rock, paper, or scissors.';
+            return 'Invalid player choice. Enter rock, paper, or scissors.';
     }
 }
 
@@ -216,7 +227,11 @@ rockButton.addEventListener('click', (evt) => {
     // Update the score on event clicks, so that the player can see the final
     // result until they click on a button again.
     updateScores();
-    playRound(evt.target.value, getComputerChoice());
+
+    // Play a round, store the result, and render it on the result HTML element
+    let roundResult = playRound(evt.target.value, getComputerChoice());
+    renderOnResultElement(roundResult);
+
     announceWinner();
 });
 
@@ -224,7 +239,8 @@ paperButton.addEventListener('click', (evt) => {
     paperSound.currentTime = 0;
     paperSound.play();
     updateScores();
-    playRound(evt.target.value, getComputerChoice());
+    let roundResult = playRound(evt.target.value, getComputerChoice());
+    renderOnResultElement(roundResult);
     announceWinner();
 });
 
@@ -232,7 +248,8 @@ scissorsButton.addEventListener('click', (evt) => {
     scissorsSound.currentTime = 0;
     scissorsSound.play();
     updateScores();
-    playRound(evt.target.value, getComputerChoice());
+    let roundResult = playRound(evt.target.value, getComputerChoice());
+    renderOnResultElement(roundResult);
     announceWinner();
 });
 
