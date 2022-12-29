@@ -53,10 +53,9 @@ let renderOnResultElement = (text) => {
  * This function plays a round of rock, paper, scissors against the COM and returns
  * the result of the game as a string.
  * 
- * The result is then rendered on the main page.
- * 
  * @param {String} playerSelection the player's choice obtained from the prompt
  * @param {String} computerChoice the previously generated computer choice.
+ * @returns {String} the result of the match
  * 
  */
 let playRound = (playerSelection, computerChoice) => {
@@ -124,15 +123,15 @@ let updateScores = () => {
 
 /**
  * This function determines the winner of the game once a total of 5 games are won
- * by either the player or the computer.
+ * by either the player or the computer. It then prompts the player to replay the game
  */
 let announceWinner = () => {
     if ( playerScore === 5 ){
-        result.textContent = 'Congrats! You win!';
+        renderOnResultElement('Congrats! You win!');
         askForReplay();
     }  
     else if ( computerScore === 5 ){
-        result.textContent = 'Sorry, you lose! Computer wins!';
+        renderOnResultElement('Sorry, you lose! Computer wins!');
         askForReplay();
     }
     // Check for scores and make sure there is a winner
